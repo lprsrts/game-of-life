@@ -1,21 +1,21 @@
 /**
  * Conway's Game of Life - Main Entry Point
- * 
- * This program implements Conway's Game of Life, a cellular automaton created by 
+ *
+ * This program implements Conway's Game of Life, a cellular automaton created by
  * mathematician John Conway in 1970. It's a zero-player game where the evolution
  * is determined by its initial state, requiring no further input.
- * 
+ *
  * The Game of Life consists of a grid of cells which can be either alive or dead.
  * Each cell interacts with its eight neighbors according to these simple rules:
- * 
+ *
  * 1. Any live cell with 2-3 live neighbors survives
  * 2. Any dead cell with exactly 3 live neighbors becomes alive
  * 3. All other live cells die, and all other dead cells stay dead
- * 
+ *
  * Despite these simple rules, the Game of Life can create complex patterns,
  * including oscillators, gliders that move across the grid, and even patterns
  * that can simulate universal computation.
- * 
+ *
  * This implementation features:
  * - Responsive grid that scales with window size while maintaining aspect ratio
  * - Interactive mouse controls for toggling individual cells
@@ -24,22 +24,23 @@
  * - Multiple preset patterns including the famous glider
  * - Adjustable simulation speed and pause functionality
  * - Visual enhancements with subtle grid patterns and proper spacing
- * 
+ *
  * The program uses SFML (Simple and Fast Multimedia Library) for graphics,
  * window management, and event handling.
  */
 
-#include "GameOfLife.hpp"
+#include "core/GameEngine.hpp"
+#include "patterns/PatternManager.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Angle.hpp>
 #include <iostream>
 
 /**
  * Main function - Entry point for the Game of Life simulation
- * 
+ *
  * Initializes the game, displays control instructions to the user,
  * sets up an initial pattern, and starts the main game loop.
- * 
+ *
  * @return 0 on successful program completion
  */
 int main() {
@@ -77,20 +78,20 @@ int main() {
   std::cout << "TIP: Try the glider pattern (G) to see a pattern that" << std::endl;
   std::cout << "     moves across the grid, or random (R) for chaos!" << std::endl;
   std::cout << "=====================================================" << std::endl;
-  
-  // Create the Game of Life simulation with default grid size (50x50 cells)
-  // The grid will be displayed in a window and scaled appropriately
-  GameOfLife game;
-  
+
+  // Create the Game of Life simulation with modular architecture
+  // The game engine coordinates all subsystems: grid, renderer, input, UI, and patterns
+  GameEngine engine;
+
   // Initialize with a classic glider pattern to demonstrate the Game of Life
   // The glider is a 5-cell pattern that travels diagonally across the grid,
   // moving one cell every 4 generations - a perfect introduction to the game
-  game.seedGliderPattern();
-  
+  engine.getPatternManager().applyPattern(engine.getGrid(), "glider");
+
   // Start the main game loop - this will run until the user closes the window
   // The loop handles events, updates the simulation state, and renders graphics
-  game.run();
-  
+  engine.run();
+
   // Program completed successfully
   return 0;
 }

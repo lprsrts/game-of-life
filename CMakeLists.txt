@@ -12,6 +12,15 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(gol src/main.cpp src/GameOfLife.cpp)
+add_executable(gol 
+    src/main.cpp
+    src/core/GameEngine.cpp
+    src/core/Grid.cpp
+    src/graphics/Renderer.cpp
+    src/input/InputHandler.cpp
+    src/ui/UIManager.cpp
+    src/ui/Button.cpp
+    src/patterns/PatternManager.cpp
+)
 target_compile_features(gol PRIVATE cxx_std_17)
 target_link_libraries(gol PRIVATE SFML::Graphics)
