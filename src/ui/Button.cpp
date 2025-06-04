@@ -96,7 +96,7 @@ void Button::drawPauseSymbol(sf::RenderWindow& window, sf::Vector2f center) cons
 
 void Button::drawPlaySymbol(sf::RenderWindow& window, sf::Vector2f center) const {
     sf::CircleShape triangle(8, 3);
-    triangle.setPosition(sf::Vector2f(center.x - 6, center.y - 8));
+    triangle.setPosition(sf::Vector2f(center.x + 6, center.y - 8));
     triangle.setFillColor(sf::Color::Black);
     triangle.rotate(sf::degrees(90));
     window.draw(triangle);
@@ -111,7 +111,7 @@ void Button::drawSpeedUpSymbol(sf::RenderWindow& window, sf::Vector2f center) co
 
 void Button::drawSpeedDownSymbol(sf::RenderWindow& window, sf::Vector2f center) const {
     sf::CircleShape arrow(8, 3);
-    arrow.setPosition(sf::Vector2f(center.x - 8, center.y - 4));
+    arrow.setPosition(sf::Vector2f(center.x + 8, center.y + 6));
     arrow.setFillColor(sf::Color::Black);
     arrow.rotate(sf::degrees(180));
     window.draw(arrow);

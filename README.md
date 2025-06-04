@@ -1,4 +1,4 @@
-# Conway's Game of Life - Modular Architecture
+# Conway's Game of Life - Simple and Modular Architecture
 
 A modern C++ implementation of Conway's Game of Life featuring a clean, modular architecture built with SFML. This cellular automaton demonstrates how simple rules can create complex, emergent behaviors.
 
@@ -10,6 +10,12 @@ A modern C++ implementation of Conway's Game of Life featuring a clean, modular 
 - **Responsive Layout**: Automatic scaling and centering
 - **Real-time Simulation**: Adjustable speed controls
 - **Visual Polish**: Subtle grid patterns and smooth animations
+
+## Screenshots
+
+### Main Interface
+![Game of Life Main Interface](screenshots/main-interface.png)
+*The main game interface showing the grid, control buttons, and a random pattern*
 
 ## Architecture Overview
 

@@ -13,9 +13,9 @@ UIManager::~UIManager() {
 
 void UIManager::initializeButtons() {
     clearButtons();
-    
+
     sf::Vector2f startPos = calculateButtonStartPosition();
-    
+
     createPauseButton(startPos);
     createSpeedUpButton(sf::Vector2f(startPos.x + BUTTON_WIDTH + BUTTON_SPACING, startPos.y));
     createSpeedDownButton(sf::Vector2f(startPos.x + 2 * (BUTTON_WIDTH + BUTTON_SPACING), startPos.y));
@@ -24,7 +24,6 @@ void UIManager::initializeButtons() {
 }
 
 void UIManager::update() {
-    // Update button states if needed
     // This can be expanded for animations or state changes
 }
 
@@ -108,25 +107,25 @@ void UIManager::createClearButton(sf::Vector2f position) {
 
 sf::Vector2f UIManager::calculateButtonStartPosition() const {
     sf::Vector2u windowSize = gameEngine.getWindow().getSize();
-    
+
     float totalButtonWidth = (5 * BUTTON_WIDTH) + (4 * BUTTON_SPACING);
     float startX = (windowSize.x - totalButtonWidth) / 2.0f;
     float buttonY = MARGIN / 2.0f;
-    
+
     float minStartX = MARGIN / 4.0f;
     float maxStartX = windowSize.x - totalButtonWidth - MARGIN / 4.0f;
     startX = std::max(minStartX, std::min(startX, maxStartX));
-    
+
     buttonY = std::max(MARGIN / 4.0f, std::min(buttonY, MARGIN - BUTTON_HEIGHT - MARGIN / 4.0f));
-    
+
     return sf::Vector2f(startX, buttonY);
 }
 
 void UIManager::repositionButtons() {
     if (buttons.empty()) return;
-    
+
     sf::Vector2f startPos = calculateButtonStartPosition();
-    
+
     for (size_t i = 0; i < buttons.size(); ++i) {
         sf::Vector2f newPos(startPos.x + i * (BUTTON_WIDTH + BUTTON_SPACING), startPos.y);
         buttons[i]->setPosition(newPos);
