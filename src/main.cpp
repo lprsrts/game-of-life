@@ -25,7 +25,7 @@
  * - Adjustable simulation speed and pause functionality
  * - Visual enhancements with subtle grid patterns and proper spacing
  *
- * The program uses SFML (Simple and Fast Multimedia Library) for graphics,
+ * The program uses SFML for graphics,
  * window management, and event handling.
  */
 
